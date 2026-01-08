@@ -11,6 +11,7 @@
     <!-- Top App Bar -->
     <header class="appbar" role="banner">
       <button class="icon-btn" id="btnDrawer" aria-label="Menü">
+        <!-- hamburger icon -->
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
@@ -20,9 +21,9 @@
         <div class="title" id="activeListName">Zuhause</div>
       </div>
 
-      <!-- Logo oben rechts (öffnet trotzdem das Options-Sheet) -->
+      <!-- Logo oben rechts (öffnet Options-Sheet) -->
       <button class="logo-btn" id="btnTopMenu" aria-label="Optionen">
-        <span class="logo-mark" aria-hidden="true">LOGO</span>
+        <span class="logo-mark" aria-hidden="true">leaf</span>
       </button>
     </header>
 
@@ -113,6 +114,22 @@
       </div>
     </main>
 
+    <!-- Inspiration screen -->
+    <main class="screen hidden" id="screenInspire" aria-label="Inspiration">
+      <div class="subhead">
+        <div class="subhead-title">Inspiration</div>
+      </div>
+      <div id="inspirationList" class="card-list"></div>
+    </main>
+
+    <!-- History screen -->
+    <main class="screen hidden" id="screenHistory" aria-label="Historie">
+      <div class="subhead">
+        <div class="subhead-title">Historie</div>
+      </div>
+      <div id="historyList" class="card-list"></div>
+    </main>
+
     <main class="screen hidden" id="screenProfile" aria-label="Profil">
       <div class="profile-head">
         <div class="avatar" id="avatar">A</div>
@@ -154,6 +171,52 @@
           </div>
         </form>
       </div>
+
+      <!-- Integration card -->
+      <div class="card">
+        <div class="subhead">
+          <div class="subhead-title">Integration</div>
+        </div>
+        <div class="card-content">
+          <p>Jetzt einbinden</p>
+          <div class="integration-buttons">
+            <button class="integration-btn" type="button">Siri</button>
+            <button class="integration-btn" type="button">Alexa</button>
+            <button class="integration-btn" type="button">Apple Watch</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Abo card -->
+      <div class="card">
+        <div class="subhead">
+          <div class="subhead-title">Abo</div>
+        </div>
+        <div class="card-content">
+          <p>Aktuell: <span id="proStatus">Free</span></p>
+          <div class="abo-models">
+            <div class="abo-option free">
+              <h4>Free</h4>
+              <p>Basisfunktionen</p>
+            </div>
+            <div class="abo-option pro">
+              <h4>Pro</h4>
+              <p>Rezepte &amp; Inspiration</p>
+            </div>
+          </div>
+          <button class="btn" id="btnTogglePro" type="button">Pro aktivieren</button>
+        </div>
+      </div>
+
+      <!-- Version card -->
+      <div class="card">
+        <div class="subhead">
+          <div class="subhead-title">Version</div>
+        </div>
+        <div class="card-content">
+          <p>v1.0.2</p>
+        </div>
+      </div>
     </main>
 
     <!-- Bottom Nav -->
@@ -169,6 +232,18 @@
           <svg viewBox="0 0 24 24"><path d="M7 4h10v16H7zM9 8h6M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </span>
         <span>Rezepte</span>
+      </button>
+      <button class="navbtn" data-screen="inspire" aria-label="Inspiration">
+        <span class="navico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+        </span>
+        <span>Inspiration</span>
+      </button>
+      <button class="navbtn" data-screen="history" aria-label="Historie">
+        <span class="navico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M13 3a9 9 0 1 0 8.06 4.94" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 1v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span>Historie</span>
       </button>
       <button class="navbtn" data-screen="profile" aria-label="Profil">
         <span class="navico" aria-hidden="true">
@@ -204,7 +279,7 @@
       <button class="sheet-item" id="btnCloseSheet" type="button">Schließen</button>
     </div>
 
-    <!-- Add / Edit Item Sheet (icon/category + qty) -->
+    <!-- Item sheet (for adding/editing items) -->
     <div class="sheet-backdrop hidden" id="itemSheetBackdrop"></div>
     <div class="sheet hidden" id="itemSheet" role="dialog" aria-label="Artikel hinzufügen">
       <div class="sheet-header">
@@ -232,7 +307,7 @@
             <option value="veg">Gemüse</option>
             <option value="grain">Trockenwaren</option>
             <option value="dairy">Milchprodukte</option>
-            <option value="bread">Brot & Backwaren</option>
+            <option value="bread">Brot &amp; Backwaren</option>
             <option value="other">Sonstiges</option>
           </select>
         </label>
@@ -244,7 +319,7 @@
       </form>
     </div>
 
-    <!-- Prompt dialog -->
+    <!-- Prompt dialog for generic input -->
     <dialog class="dialog" id="promptDialog" aria-label="Eingabe">
       <form method="dialog" class="dialog-inner" id="promptForm">
         <div class="dialog-title" id="promptTitle">Titel</div>

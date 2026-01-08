@@ -1,12 +1,11 @@
 :root{
-  --green:#22C55E;          /* primary */
-  --greenDark:#16A34A;      /* pressed/active */
+  --green:#22C55E;
+  --greenDark:#16A34A;
   --bg:#ffffff;
   --text:#0b0f14;
   --muted:#6b7280;
   --divider:#eceef1;
   --chip:#f3f4f6;
-
   --shadow: 0 10px 30px rgba(0,0,0,.10);
   --shadow2: 0 3px 10px rgba(0,0,0,.08);
   --radius:16px;
@@ -95,17 +94,29 @@ body{
   background: rgba(255,255,255,.95);
   margin-right:8px;
   vertical-align:-2px;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 3c-6 1-10 5-11 11 6-1 10-5 11-11ZM5 21c1-6 5-10 11-11-1 6-5 10-11 11Z'/%3E%3C/svg%3E") center / contain no-repeat;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 3c-6 1-10 5-11 11 6-1 10-5 11-11ZM5 21c1-6 5-10 11-11-1 6-5 10-11 11Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 3c-6 1-10 5-11 11 6-1 10-5 11-11ZM5 21c1-6 5-10 11-11-1 6-5 10-11 11Z'/%3E%3C/svg%3E") center/contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 3c-6 1-10 5-11 11 6-1 10-5 11-11ZM5 21c1-6 5-10 11-11-1 6-5 10-11 11Z'/%3E%3C/svg%3E") center/contain no-repeat;
 }
 
-/* Search */
+/* Search bar */
 .search-wrap{
-  background: linear-gradient(135deg, rgba(34,197,94,1), rgba(22,163,74,1));
+  background: linear-gradient(135deg, var(--green), var(--greenDark));
   padding: 10px 12px 12px;
   position:sticky;
   top:56px;
   z-index:5;
+}
+/* When scrolled, search bar floats to top */
+.search-wrap.floating{
+  position:fixed;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(520px, 100%);
+  border-bottom:1px solid var(--divider);
+  z-index:10;
+  padding-top:8px;
+  padding-bottom:8px;
 }
 .search{
   background:#fff;
@@ -145,7 +156,7 @@ body{
 }
 .hidden{display:none !important}
 
-/* List rows (minimal modern) */
+/* List rows */
 .row-item{
   height: var(--touch);
   display:flex;
@@ -292,6 +303,12 @@ body{
 .navbtn svg{width:22px; height:22px}
 .navbtn.is-active{color: var(--greenDark)}
 .navbtn:active{background:#f3f4f6}
+/* Disabled nav buttons for non-pro features */
+.navbtn.disabled{
+  opacity:0.4;
+  pointer-events:none;
+  cursor:default;
+}
 
 /* Overlay (search results) */
 .overlay{
@@ -431,7 +448,7 @@ body{
 .field span{display:block; font-size:12px; color: var(--muted); margin-bottom:6px; font-weight:800}
 .row{display:flex; justify-content:space-between; gap:10px; padding: 12px}
 
-/* Drawer */
+/* Drawer & sheets */
 .drawer-backdrop, .sheet-backdrop{
   position:fixed; inset:0;
   background: rgba(0,0,0,.22);
@@ -450,7 +467,7 @@ body{
 }
 .drawer-head{
   height:56px;
-  background: linear-gradient(135deg, rgba(34,197,94,1), rgba(22,163,74,1));
+  background: linear-gradient(135deg, var(--green), var(--greenDark));
   color:#fff;
   display:flex;
   align-items:center;
@@ -472,7 +489,7 @@ body{
 .drawer-item .meta{color:var(--muted)}
 .drawer-item.is-active .name{color: var(--greenDark)}
 
-/* Sheet */
+/* Generic sheet */
 .sheet{
   position:fixed;
   left:50%;
@@ -533,7 +550,106 @@ dialog::backdrop{background: rgba(0,0,0,.35)}
 }
 .dialog-actions{display:flex; justify-content:flex-end; gap:10px; margin-top:12px}
 
-/* Safe-area (iOS) */
+/* Safe area (iOS) */
 .safe-area{
   height: env(safe-area-inset-bottom);
 }
+
+/* Additional classes for new features */
+.card-content{padding:14px}
+.integration-buttons{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:10px;
+}
+.integration-btn{
+  flex:1;
+  border:1px solid var(--divider);
+  background:#f9fafb;
+  color: var(--muted);
+  padding: 10px;
+  border-radius: 12px;
+  text-align:center;
+  font-weight:700;
+  cursor:default;
+}
+.integration-btn:active{transform: translateY(1px)}
+
+.abo-models{
+  display:flex;
+  gap:10px;
+  margin:10px 0;
+}
+.abo-option{
+  flex:1;
+  padding:10px;
+  border:1px solid var(--divider);
+  border-radius: 12px;
+  background: #f9fafb;
+  text-align:center;
+}
+.abo-option.free{color: var(--muted)}
+.abo-option.pro{
+  background:#ecfdf5;
+  border-color:#d1fae5;
+  color: var(--greenDark);
+}
+
+/* Card list (for inspiration and history) */
+.card-list{
+  margin: 0 14px 14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.inspire-card{
+  padding:14px;
+  background:#fff;
+  border:1px solid var(--divider);
+  border-radius: 18px;
+  box-shadow: var(--shadow2);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.inspire-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.inspire-title{
+  font-size:20px;
+  font-weight:700;
+  flex:1;
+  margin-right:8px;
+}
+.heart-btn{
+  border:none;
+  background: transparent;
+  color: var(--greenDark);
+  font-size:20px;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  cursor:pointer;
+}
+.heart-btn svg{width:20px;height:20px}
+.add-btn{
+  border:none;
+  background: var(--greenDark);
+  color:#fff;
+  padding:8px 12px;
+  border-radius: 12px;
+  font-weight:800;
+  cursor:pointer;
+}
+.add-btn:active{transform: translateY(1px)}
+
+/* History items - adjust date display */
+.history-item .row-sub{font-size:12px; color: var(--muted)}
+
+/* Hide hearts and pro features if not subscribed (visual only) */
+.is-pro .abo-option.pro{border-color:var(--greenDark); background:#d1fae5; color:var(--greenDark)}
+.is-pro .abo-option.free{color:var(--muted); opacity:.6}
+.is-pro #proStatus{color:var(--greenDark)}
