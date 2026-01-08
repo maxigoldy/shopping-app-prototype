@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Einkaufsliste</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app" role="application" aria-label="Einkaufsliste App">
+    <!-- Top App Bar -->
+    <header class="appbar" role="banner">
+      <button class="icon-btn" id="btnDrawer" aria-label="Menü">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="appbar-title">
+        <div class="title" id="activeListName">Zuhause</div>
+      </div>
+
+      <!-- Logo oben rechts (öffnet trotzdem das Options-Sheet) -->
+      <button class="logo-btn" id="btnTopMenu" aria-label="Optionen">
+        <span class="logo-mark" aria-hidden="true">LOGO</span>
+      </button>
+    </header>
+
+    <!-- Search (always on top) -->
+    <div class="search-wrap">
+      <div class="search">
+        <span class="search-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M10.5 4a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Zm8.9 13.5-3.1-3.1"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Wir brauchen" aria-label="Suchen und hinzufügen" />
+        <button class="clear-btn" id="btnClearSearch" type="button" aria-label="Suche löschen">×</button>
+      </div>
+
+      <!-- Search overlay results -->
+      <div class="overlay hidden" id="searchOverlay" role="dialog" aria-label="Suchergebnisse">
+        <div class="overlay-sheet">
+          <div class="overlay-head">
+            <div class="overlay-title">Schnell hinzufügen</div>
+            <div class="overlay-hint">Tippe einen Vorschlag oder füge den Text direkt hinzu.</div>
+          </div>
+
+          <div class="overlay-section">
+            <div class="overlay-section-title">AKTION</div>
+            <div class="overlay-actions" id="searchActions"></div>
+          </div>
+
+          <div class="overlay-section">
+            <div class="overlay-section-title">VORSCHLÄGE</div>
+            <div class="overlay-list" id="searchSuggestions"></div>
+          </div>
+
+          <div class="overlay-section">
+            <div class="overlay-section-title">REZEPTE</div>
+            <div class="overlay-list" id="searchRecipes"></div>
+          </div>
+
+          <div class="overlay-footer">
+            <button class="btn ghost" id="btnCloseOverlay" type="button">Schließen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screens -->
+    <main class="screen" id="screenList" aria-label="Liste">
+      <section class="list" aria-label="Aktuelle Einkaufsliste">
+        <div id="itemsList"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div class="section-title">ZULETZT ABGEHAKT</div>
+          <div class="section-icons" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 7h10M4 12h14M4 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M7 7h10M7 12h10M7 17h10M5 7h0M5 12h0M5 17h0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div id="recentList"></div>
+      </section>
+
+      <button class="fab" id="fabAdd" aria-label="Artikel hinzufügen">+</button>
+    </main>
+
+    <main class="screen hidden" id="screenRecipes" aria-label="Rezepte">
+      <div class="subhead">
+        <div class="subhead-title">Rezepte</div>
+        <button class="btn" id="btnNewRecipe" type="button">Neu</button>
+      </div>
+      <div class="card" id="recipesList"></div>
+
+      <div class="divider"></div>
+
+      <div class="subhead">
+        <div class="subhead-title" id="recipeTitle">—</div>
+        <button class="btn ghost" id="btnAddRecipeToList" type="button">Zutaten → Liste</button>
+      </div>
+      <div class="card">
+        <form class="form-row" id="ingredientForm" autocomplete="off">
+          <input class="input" id="ingName" placeholder="Zutat (z.B. Tomaten)" required />
+          <input class="input small" id="ingQty" placeholder="Menge (z.B. 2)" />
+          <button class="btn" type="submit">+</button>
+        </form>
+        <div class="mini-hint">Tipp: Rezepte erscheinen auch in der Suche.</div>
+        <div id="ingredientsList"></div>
+      </div>
+    </main>
+
+    <main class="screen hidden" id="screenProfile" aria-label="Profil">
+      <div class="profile-head">
+        <div class="avatar" id="avatar">A</div>
+        <div>
+          <div class="profile-name" id="profileNameLabel">Alex Demo</div>
+          <div class="profile-sub" id="profileSubLabel">Haushalt • Ernährung • Lieblingsladen</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <form id="profileForm" autocomplete="off">
+          <label class="field">
+            <span>Name</span>
+            <input class="input" id="profileName" required />
+          </label>
+
+          <label class="field">
+            <span>Haushalt</span>
+            <input class="input" id="profileHousehold" placeholder="z.B. WG / Familie" />
+          </label>
+
+          <label class="field">
+            <span>Ernährung</span>
+            <select class="input" id="profileDiet">
+              <option value="omnivor">Omnivor</option>
+              <option value="vegetarisch">Vegetarisch</option>
+              <option value="vegan">Vegan</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Lieblingsladen</span>
+            <input class="input" id="profileStore" placeholder="z.B. Aldi" />
+          </label>
+
+          <div class="row">
+            <button class="btn ghost" id="btnResetDemo" type="button">Demo zurücksetzen</button>
+            <button class="btn" type="submit">Speichern</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Bottom Nav -->
+    <nav class="bottomnav" aria-label="Navigation">
+      <button class="navbtn is-active" data-screen="list" aria-label="Liste">
+        <span class="navico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 7h14M7 12h14M7 17h14M4 7h0M4 12h0M4 17h0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span>Liste</span>
+      </button>
+      <button class="navbtn" data-screen="recipes" aria-label="Rezepte">
+        <span class="navico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 4h10v16H7zM9 8h6M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span>Rezepte</span>
+      </button>
+      <button class="navbtn" data-screen="profile" aria-label="Profil">
+        <span class="navico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-8 9a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span>Profil</span>
+      </button>
+    </nav>
+
+    <!-- Drawer -->
+    <div class="drawer-backdrop hidden" id="drawerBackdrop"></div>
+    <aside class="drawer hidden" id="drawer" aria-label="Listen">
+      <div class="drawer-head">
+        <div class="drawer-title">Listen</div>
+        <button class="icon-btn" id="btnCloseDrawer" aria-label="Schließen">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="drawer-body">
+        <div id="listsDrawer"></div>
+        <button class="btn full" id="btnNewList" type="button">+ Neue Liste</button>
+      </div>
+    </aside>
+
+    <!-- Top menu (options) -->
+    <div class="sheet-backdrop hidden" id="sheetBackdrop"></div>
+    <div class="sheet hidden" id="topSheet" role="dialog" aria-label="Optionen">
+      <button class="sheet-item" id="btnRenameList" type="button">Liste umbenennen</button>
+      <button class="sheet-item danger" id="btnDeleteList" type="button">Liste löschen</button>
+      <div class="sheet-sep"></div>
+      <button class="sheet-item" id="btnGoProfile" type="button">Zum Profil</button>
+      <button class="sheet-item" id="btnGoRecipes" type="button">Zu Rezepten</button>
+      <button class="sheet-item" id="btnCloseSheet" type="button">Schließen</button>
+    </div>
+
+    <!-- Add / Edit Item Sheet (icon/category + qty) -->
+    <div class="sheet-backdrop hidden" id="itemSheetBackdrop"></div>
+    <div class="sheet hidden" id="itemSheet" role="dialog" aria-label="Artikel hinzufügen">
+      <div class="sheet-header">
+        <div class="sheet-title" id="itemSheetTitle">Artikel hinzufügen</div>
+        <button class="icon-btn" id="btnCloseItemSheet" aria-label="Schließen">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <form id="itemForm" class="sheet-form" autocomplete="off">
+        <label class="field">
+          <span>Name</span>
+          <input class="input" id="itemName" required placeholder="z.B. Milch" />
+        </label>
+
+        <label class="field">
+          <span>Menge</span>
+          <input class="input" id="itemQty" placeholder="z.B. 2L, 1,5%" />
+        </label>
+
+        <label class="field">
+          <span>Icon/Kategorie</span>
+          <select class="input" id="itemCat">
+            <option value="fruit">Obst</option>
+            <option value="veg">Gemüse</option>
+            <option value="grain">Trockenwaren</option>
+            <option value="dairy">Milchprodukte</option>
+            <option value="bread">Brot & Backwaren</option>
+            <option value="other">Sonstiges</option>
+          </select>
+        </label>
+
+        <div class="row">
+          <button class="btn ghost" id="btnItemCancel" type="button">Abbrechen</button>
+          <button class="btn" type="submit">Speichern</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Prompt dialog -->
+    <dialog class="dialog" id="promptDialog" aria-label="Eingabe">
+      <form method="dialog" class="dialog-inner" id="promptForm">
+        <div class="dialog-title" id="promptTitle">Titel</div>
+        <input class="dialog-input" id="promptInput" required />
+        <div class="dialog-actions">
+          <button class="btn ghost" value="cancel" type="submit">Abbrechen</button>
+          <button class="btn" value="ok" type="submit">OK</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="safe-area" aria-hidden="true"></div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
