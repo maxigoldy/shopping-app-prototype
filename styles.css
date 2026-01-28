@@ -1026,3 +1026,66 @@ dialog::backdrop {
 .is-pro #proStatus {
   color: var(--greenDark)
 }
+
+/* Integration List */
+.integration-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.integration-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.integration-row:last-child {
+  border-bottom: none
+}
+
+.int-info {
+  display: flex;
+  align-items: center;
+  gap: 12px
+}
+
+.int-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  display: grid;
+  place-items: center;
+  color: #64748b;
+}
+
+.int-name {
+  font-weight: 700;
+  font-size: 16px
+}
+
+.int-btn {
+  background: var(--chip);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+}
+
+.int-btn.connected {
+  background: #e0f2fe;
+  color: #0284c7
+}
+
+/* Profile Footer */
+.profile-footer {
+  text-align: center;
+  padding: 20px 14px 40px;
+  color: var(--muted);
+  font-size: 13px;
+}
