@@ -1088,4 +1088,67 @@ dialog::backdrop {
   padding: 20px 14px 40px;
   color: var(--muted);
   font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-link-danger {
+  background: transparent;
+  border: none;
+  color: #dc2626;
+  opacity: 0.8;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.btn-link-danger:active {
+  opacity: 1
+}
+
+/* Settings Row Style */
+.settings-group {
+  display: flex;
+  flex-direction: column
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 14px;
+  border-bottom: 1px solid var(--divider);
+  min-height: 50px;
+}
+
+.settings-row:last-of-type {
+  border-bottom: none
+}
+
+.settings-label {
+  font-weight: 700;
+  font-size: 15px;
+  flex: 0 0 auto
+}
+
+.settings-input {
+  border: none;
+  background: transparent;
+  text-align: right;
+  font-size: 16px;
+  color: var(--muted);
+  width: 60%;
+  outline: none;
+  padding: 0;
+}
+
+.settings-input:focus {
+  color: var(--text)
+}
+
+.form-actions {
+  padding: 14px
 }

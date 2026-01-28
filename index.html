@@ -156,34 +156,33 @@
       </div>
 
       <div class="card">
-        <form id="profileForm" autocomplete="off">
-          <label class="field">
-            <span>Name</span>
-            <input class="input" id="profileName" required />
-          </label>
+        <form id="profileForm" autocomplete="off" class="settings-group">
+          <div class="settings-row">
+            <label class="settings-label" for="profileName">Name</label>
+            <input class="settings-input" id="profileName" required />
+          </div>
 
-          <label class="field">
-            <span>Haushalt</span>
-            <input class="input" id="profileHousehold" placeholder="z.B. WG / Familie" />
-          </label>
+          <div class="settings-row">
+            <label class="settings-label" for="profileHousehold">Haushalt</label>
+            <input class="settings-input" id="profileHousehold" placeholder="z.B. WG" />
+          </div>
 
-          <label class="field">
-            <span>Ernährung</span>
-            <select class="input" id="profileDiet">
+          <div class="settings-row">
+            <label class="settings-label" for="profileDiet">Ernährung</label>
+            <select class="settings-input" id="profileDiet">
               <option value="omnivor">Omnivor</option>
               <option value="vegetarisch">Vegetarisch</option>
               <option value="vegan">Vegan</option>
             </select>
-          </label>
+          </div>
 
-          <label class="field">
-            <span>Lieblingsladen</span>
-            <input class="input" id="profileStore" placeholder="z.B. Aldi" />
-          </label>
+          <div class="settings-row">
+            <label class="settings-label" for="profileStore">Lieblingsladen</label>
+            <input class="settings-input" id="profileStore" placeholder="z.B. Aldi" />
+          </div>
 
-          <div class="row">
-            <button class="btn ghost" id="btnResetDemo" type="button">Demo zurücksetzen</button>
-            <button class="btn" type="submit">Speichern</button>
+          <div class="form-actions">
+            <button class="btn full" type="submit">Speichern</button>
           </div>
         </form>
       </div>
@@ -262,7 +261,8 @@
       </div>
 
       <div class="profile-footer">
-        v1.0.3 • Build 2026.1
+        <div>v1.0.3 • Build 2026.1</div>
+        <button class="btn-link-danger" id="btnResetDemo" type="button">Demo zurücksetzen</button>
       </div>
 
 
