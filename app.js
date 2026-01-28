@@ -138,7 +138,7 @@ function demoState() {
     ],
   };
   return {
-    profile: { name: "Alex Demo", household: "WG", diet: "omnivor", store: "Aldi", updatedAt: now() },
+    profile: { name: "Max Mustermann", household: "WG", diet: "omnivor", store: "Aldi", updatedAt: now() },
     catalog: [
       { name: "Bananen", cat: "fruit" },
       { name: "Äpfel", cat: "fruit" },
