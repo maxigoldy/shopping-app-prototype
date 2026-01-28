@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="de">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Einkaufsliste</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <div class="app" role="application" aria-label="Einkaufsliste App">
     <!-- Top App Bar -->
@@ -13,7 +15,7 @@
       <button class="icon-btn" id="btnDrawer" aria-label="Menü">
         <!-- hamburger icon -->
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
       </button>
 
@@ -32,11 +34,13 @@
       <div class="search">
         <span class="search-ico" aria-hidden="true">
           <svg viewBox="0 0 24 24">
-            <path d="M10.5 4a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Zm8.9 13.5-3.1-3.1"
-              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path
+              d="M10.5 4a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Zm8.9 13.5-3.1-3.1"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
           </svg>
         </span>
-        <input id="searchInput" type="search" autocomplete="off" placeholder="Wir brauchen" aria-label="Suchen und hinzufügen" />
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Wir brauchen"
+          aria-label="Suchen und hinzufügen" />
         <button class="clear-btn" id="btnClearSearch" type="button" aria-label="Suche löschen">×</button>
       </div>
 
@@ -49,7 +53,10 @@
               <div class="overlay-hint">Tippe einen Vorschlag oder füge den Text direkt hinzu.</div>
             </div>
             <button class="icon-btn" id="btnCloseOverlay" type="button" aria-label="Schließen">
-              <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" />
+              </svg>
             </button>
           </div>
 
@@ -83,8 +90,14 @@
         <div class="section-head">
           <div class="section-title">ZULETZT ABGEHAKT</div>
           <div class="section-icons" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M4 7h10M4 12h14M4 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M7 7h10M7 12h10M7 17h10M5 7h0M5 12h0M5 17h0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M4 7h10M4 12h14M4 17h10" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M7 7h10M7 12h10M7 17h10M5 7h0M5 12h0M5 17h0" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" />
+            </svg>
           </div>
         </div>
         <div id="recentList"></div>
@@ -217,7 +230,7 @@
           <div class="subhead-title">Version</div>
         </div>
         <div class="card-content">
-          <p>v1.0.2</p>
+          <p>v1.0.3</p>
         </div>
       </div>
     </main>
@@ -226,31 +239,49 @@
     <nav class="bottomnav" aria-label="Navigation">
       <button class="navbtn is-active" data-screen="list" aria-label="Liste">
         <span class="navico" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M7 7h14M7 12h14M7 17h14M4 7h0M4 12h0M4 17h0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M7 7h14M7 12h14M7 17h14M4 7h0M4 12h0M4 17h0" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" />
+          </svg>
         </span>
         <span>Liste</span>
       </button>
       <button class="navbtn" data-screen="recipes" aria-label="Rezepte">
         <span class="navico" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M7 4h10v16H7zM9 8h6M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M7 4h10v16H7zM9 8h6M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" />
+          </svg>
         </span>
         <span>Rezepte</span>
       </button>
       <button class="navbtn" data-screen="inspire" aria-label="Inspiration">
         <span class="navico" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+              fill="currentColor" />
+          </svg>
         </span>
         <span>Inspiration</span>
       </button>
       <button class="navbtn" data-screen="history" aria-label="Historie">
         <span class="navico" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M13 3a9 9 0 1 0 8.06 4.94" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 1v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M13 3a9 9 0 1 0 8.06 4.94" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M13 1v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
         </span>
         <span>Historie</span>
       </button>
       <button class="navbtn" data-screen="profile" aria-label="Profil">
         <span class="navico" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-8 9a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-8 9a8 8 0 0 1 16 0" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" />
+          </svg>
         </span>
         <span>Profil</span>
       </button>
@@ -262,7 +293,9 @@
       <div class="drawer-head">
         <div class="drawer-title">Listen</div>
         <button class="icon-btn" id="btnCloseDrawer" aria-label="Schließen">
-          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
         </button>
       </div>
       <div class="drawer-body">
@@ -288,7 +321,9 @@
       <div class="sheet-header">
         <div class="sheet-title" id="itemSheetTitle">Artikel hinzufügen</div>
         <button class="icon-btn" id="btnCloseItemSheet" aria-label="Schließen">
-          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
         </button>
       </div>
 
@@ -339,4 +374,5 @@
 
   <script src="app.js" defer></script>
 </body>
+
 </html>
