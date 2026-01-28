@@ -44,8 +44,13 @@
       <div class="overlay hidden" id="searchOverlay" role="dialog" aria-label="Suchergebnisse">
         <div class="overlay-sheet">
           <div class="overlay-head">
-            <div class="overlay-title">Schnell hinzufügen</div>
-            <div class="overlay-hint">Tippe einen Vorschlag oder füge den Text direkt hinzu.</div>
+            <div>
+              <div class="overlay-title">Schnell hinzufügen</div>
+              <div class="overlay-hint">Tippe einen Vorschlag oder füge den Text direkt hinzu.</div>
+            </div>
+            <button class="icon-btn" id="btnCloseOverlay" type="button" aria-label="Schließen">
+              <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
           </div>
 
           <div class="overlay-section">
@@ -63,9 +68,7 @@
             <div class="overlay-list" id="searchRecipes"></div>
           </div>
 
-          <div class="overlay-footer">
-            <button class="btn ghost" id="btnCloseOverlay" type="button">Schließen</button>
-          </div>
+
         </div>
       </div>
     </div>

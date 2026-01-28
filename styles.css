@@ -333,6 +333,10 @@ body{
 .overlay-head{
   padding: 14px 14px 10px;
   border-bottom:1px solid var(--divider);
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
 }
 .overlay-title{font-size:18px; font-weight:900}
 .overlay-hint{color:var(--muted); margin-top:4px; font-size:13px}

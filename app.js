@@ -876,6 +876,11 @@ btnClearSearch.addEventListener('click', () => {
   searchInput.focus();
 });
 btnCloseOverlay.addEventListener('click', closeOverlay);
+searchOverlay.addEventListener('click', (e) => {
+  if (e.target === searchOverlay) {
+    closeOverlay();
+  }
+});
 searchInput.addEventListener('focus', () => {
   openOverlay();
   renderSearchOverlay();
