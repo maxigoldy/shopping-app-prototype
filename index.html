@@ -206,21 +206,38 @@
       <!-- Abo card -->
       <div class="card">
         <div class="subhead">
-          <div class="subhead-title">Abo</div>
+          <div class="subhead-title">Dein Abo</div>
         </div>
         <div class="card-content">
-          <p>Aktuell: <span id="proStatus">Free</span></p>
-          <div class="abo-models">
-            <div class="abo-option free">
-              <h4>Free</h4>
-              <p>Basisfunktionen</p>
+          <div class="plan-grid">
+            <div class="plan-card" id="cardFree" role="button" tabindex="0">
+              <div class="plan-head">
+                <span class="plan-name">Free</span>
+                <span class="plan-price">0 €</span>
+              </div>
+              <ul class="plan-features">
+                <li><span class="p-icon">✓</span>Listen erstellen</li>
+                <li><span class="p-icon">✓</span>Offline Nutzung</li>
+                <li><span class="p-icon">✓</span>Basisfunktionen</li>
+              </ul>
             </div>
-            <div class="abo-option pro">
-              <h4>Pro</h4>
-              <p>Rezepte &amp; Inspiration</p>
+            <div class="plan-card" id="cardPro" role="button" tabindex="0">
+              <div class="plan-badge">Empfohlen</div>
+              <div class="plan-head">
+                <span class="plan-name">Pro</span>
+                <span class="plan-price">1.99 €</span>
+              </div>
+              <ul class="plan-features">
+                <li><span class="p-icon">★</span>Rezepte</li>
+                <li><span class="p-icon">★</span>Inspiration</li>
+                <li><span class="p-icon">★</span>Herz-Funktion</li>
+              </ul>
             </div>
           </div>
-          <button class="btn" id="btnTogglePro" type="button">Pro aktivieren</button>
+          <div class="plan-actions">
+            <div class="plan-hint" id="planHint">Tippe zum Auswählen</div>
+            <button class="btn full" id="btnProAction" type="button">Pro aktivieren</button>
+          </div>
         </div>
       </div>
 

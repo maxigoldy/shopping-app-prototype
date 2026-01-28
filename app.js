@@ -252,8 +252,9 @@ const profileHousehold = $("#profileHousehold");
 const profileDiet = $("#profileDiet");
 const profileStore = $("#profileStore");
 const btnResetDemo = $("#btnResetDemo");
-const proStatus = $("#proStatus");
-const btnTogglePro = $("#btnTogglePro");
+const cardFree = $("#cardFree");
+const cardPro = $("#cardPro");
+const btnProAction = $("#btnProAction");
 
 /* Transient state for item sheet */
 let itemSheetMode = "add"; // "add" or "editCatalog"
@@ -430,7 +431,6 @@ function render() {
   renderProfile();
   // Update pro state class on body for visual toggles
   document.body.classList.toggle('is-pro', state.isPro);
-  proStatus.textContent = state.isPro ? 'Pro' : 'Free';
 }
 
 function renderList() {
@@ -735,7 +735,7 @@ function renderHistory() {
 /* Profile rendering */
 function renderProfile() {
   const p = state.profile || {};
-  const initial = (p.name || 'U').trim().slice(0,1).toUpperCase();
+  const initial = (p.name || 'U').trim().slice(0, 1).toUpperCase();
   avatar.textContent = initial;
   profileNameLabel.textContent = p.name || 'User';
   profileSubLabel.textContent = `${p.household || 'Haushalt'} • ${p.diet || 'Ernährung'} • ${p.store || 'Lieblingsladen'}`;
@@ -743,7 +743,19 @@ function renderProfile() {
   profileHousehold.value = p.household || '';
   profileDiet.value = p.diet || 'omnivor';
   profileStore.value = p.store || '';
-  // pro status updated in render() via body class toggle
+
+  // Pro UI updates
+  if (state.isPro) {
+    cardFree.classList.remove('selected');
+    cardPro.classList.add('selected');
+    btnProAction.textContent = "Abo verwalten";
+    btnProAction.classList.add('ghost');
+  } else {
+    cardFree.classList.add('selected');
+    cardPro.classList.remove('selected');
+    btnProAction.textContent = "Pro aktivieren";
+    btnProAction.classList.remove('ghost');
+  }
 }
 
 /* Navigation: set screen and update nav active states */
@@ -766,16 +778,16 @@ function chip(text, onClick, cls = '') {
 }
 
 /* Overlay open/close */
-function openOverlay(){ searchOverlay.classList.remove('hidden'); }
-function closeOverlay(){ searchOverlay.classList.add('hidden'); }
+function openOverlay() { searchOverlay.classList.remove('hidden'); }
+function closeOverlay() { searchOverlay.classList.add('hidden'); }
 
 /* Drawer open/close */
-function openDrawer(){ drawerBackdrop.classList.remove('hidden'); drawer.classList.remove('hidden'); }
-function closeDrawer(){ drawerBackdrop.classList.add('hidden'); drawer.classList.add('hidden'); }
+function openDrawer() { drawerBackdrop.classList.remove('hidden'); drawer.classList.remove('hidden'); }
+function closeDrawer() { drawerBackdrop.classList.add('hidden'); drawer.classList.add('hidden'); }
 
 /* Sheet open/close */
-function openSheet(){ sheetBackdrop.classList.remove('hidden'); topSheet.classList.remove('hidden'); }
-function closeSheet(){ sheetBackdrop.classList.add('hidden'); topSheet.classList.add('hidden'); }
+function openSheet() { sheetBackdrop.classList.remove('hidden'); topSheet.classList.remove('hidden'); }
+function closeSheet() { sheetBackdrop.classList.add('hidden'); topSheet.classList.add('hidden'); }
 
 /* Item sheet open/close */
 function openItemSheet({ title = 'Artikel hinzufügen', mode = 'add', prefill = null, catalogKey = null }) {
@@ -790,7 +802,7 @@ function openItemSheet({ title = 'Artikel hinzufügen', mode = 'add', prefill = 
   itemSheet.classList.remove('hidden');
   setTimeout(() => itemName.focus(), 0);
 }
-function closeItemSheet(){
+function closeItemSheet() {
   itemSheetBackdrop.classList.add('hidden');
   itemSheet.classList.add('hidden');
 }
@@ -841,7 +853,7 @@ btnRenameList.addEventListener('click', async () => {
 btnDeleteList.addEventListener('click', () => {
   closeSheet();
   const list = activeList();
-  if (state.lists.length === 1){
+  if (state.lists.length === 1) {
     list.items = [];
     list.recentlyChecked = [];
     list.name = 'Zuhause';
@@ -890,12 +902,12 @@ searchInput.addEventListener('input', () => {
   if (searchOverlay.classList.contains('hidden')) openOverlay();
 });
 searchInput.addEventListener('keydown', async (e) => {
-  if (e.key === 'Enter'){
+  if (e.key === 'Enter') {
     e.preventDefault();
     const txt = searchInput.value.trim();
     if (!txt) return;
     const hit = catalogFindByName(txt);
-    if (hit){
+    if (hit) {
       addItemToActiveList({ name: txt, qty: '', cat: hit.cat, persistToCatalog: true });
       searchInput.value = '';
       renderSearchOverlay();
@@ -904,7 +916,7 @@ searchInput.addEventListener('keydown', async (e) => {
       openItemSheet({ title: 'Eigenen Artikel hinzufügen', mode: 'add', prefill: { name: txt, qty: '', cat: 'other' } });
     }
   }
-  if (e.key === 'Escape'){
+  if (e.key === 'Escape') {
     closeOverlay();
     searchInput.blur();
   }
@@ -925,7 +937,7 @@ itemForm.addEventListener('submit', (e) => {
   // Add to list
   addItemToActiveList({ name: n, qty: q, cat: c, persistToCatalog: true });
   // If editing catalog: update existing items across lists
-  if (itemSheetMode === 'editCatalog'){
+  if (itemSheetMode === 'editCatalog') {
     const key = itemSheetCatalogKey || normalize(n);
     state.lists.forEach((l) => {
       l.items.forEach((it) => {
@@ -998,7 +1010,24 @@ btnResetDemo.addEventListener('click', () => {
   saveState();
   render();
 });
-btnTogglePro.addEventListener('click', () => {
+// Pro Plan interactions
+cardFree.addEventListener('click', () => {
+  if (state.isPro) {
+    // Switch to free
+    state.isPro = false;
+    saveState();
+    render();
+  }
+});
+cardPro.addEventListener('click', () => {
+  if (!state.isPro) {
+    state.isPro = true;
+    saveState();
+    render();
+  }
+});
+btnProAction.addEventListener('click', () => {
+  // If free, activate pro. If pro, toggle off (cancel)
   state.isPro = !state.isPro;
   saveState();
   render();
@@ -1007,7 +1036,7 @@ btnTogglePro.addEventListener('click', () => {
 /* Scroll behavior: make search bar float to top when header is out of view */
 window.addEventListener('scroll', () => {
   const threshold = 56; // height of appbar
-  if (window.scrollY > threshold){
+  if (window.scrollY > threshold) {
     searchWrap.classList.add('floating');
   } else {
     searchWrap.classList.remove('floating');
@@ -1015,7 +1044,7 @@ window.addEventListener('scroll', () => {
 });
 
 /* Initialization */
-(function init(){
+(function init() {
   // Ensure state has valid ids
   if (!state.activeListId) state.activeListId = state.lists[0]?.id;
   if (!state.activeRecipeId) state.activeRecipeId = state.recipes[0]?.id;
