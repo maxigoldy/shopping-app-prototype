@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einkaufsliste Prototyp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .screen {
+            display: none;
+            max-width: 400px;
+            margin: 20px auto;
+            background: white;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 600px;
+        }
+        
+        .screen.active {
+            display: block;
+        }
+        
+        .header {
+            border: 2px solid #333;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .header-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .search-bar {
+            border: 1px solid #333;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        
+        .item-list {
+            margin: 20px 0;
+        }
+        
+        .list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #333;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .list-item:hover {
+            background: #f0f0f0;
+        }
+        
+        .item-icon {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        
+        .item-content {
+            flex: 1;
+        }
+        
+        .item-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .add-section {
+            border: 1px solid #333;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        
+        .add-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            background: #ffc0cb;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        .add-button:hover {
+            background: #ffb0bb;
+        }
+        
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            border-top: 2px solid #333;
+            padding-top: 15px;
+            margin-top: 20px;
+        }
+        
+        .nav-button {
+            border: 2px solid #333;
+            padding: 8px 15px;
+            cursor: pointer;
+            background: white;
+        }
+        
+        .nav-button:hover {
+            background: #e0e0e0;
+        }
+        
+        .nav-button.active {
+            background: #ffc0cb;
+        }
+        
+        .recipe-section {
+            margin: 20px 0;
+        }
+        
+        .recipe-item {
+            border: 1px solid #333;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .ingredient-group {
+            margin: 20px 0;
+        }
+        
+        .ingredient-header {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .ingredient-col {
+            border: 1px solid #333;
+            padding: 5px;
+            flex: 1;
+        }
+        
+        .ingredient-item {
+            display: flex;
+            align-items: center;
+            border: 1px solid #333;
+            padding: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .tab-button {
+            border: 1px solid #333;
+            padding: 5px 10px;
+            cursor: pointer;
+            background: white;
+        }
+        
+        .tab-button.active {
+            background: #333;
+            color: white;
+        }
+        
+        .profile-section {
+            margin: 20px 0;
+        }
+        
+        .profile-item {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #333;
+            padding: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .save-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .save-option {
+            flex: 1;
+            border: 1px solid #333;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .save-option:hover {
+            background: #f0f0f0;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            border: 1px solid #333;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        
+        button {
+            border: 1px solid #333;
+            padding: 8px 15px;
+            background: white;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Screen 1: Liste -->
+    <div class="screen active" id="screen-liste">
+        <div class="header">
+            <div class="header-title">Name Einkaufsliste</div>
+            <div class="search-bar">Suchleiste</div>
+        </div>
+        
+        <div class="item-list">
+            <div class="list-item">
+                <div class="item-icon">ICON</div>
+                <div class="item-content">Beispielitem</div>
+                <div class="item-checkbox"></div>
+            </div>
+            <div class="list-item">
+                <div class="item-icon">ICON</div>
+                <div class="item-content">Beispielitem</div>
+                <div class="item-checkbox"></div>
+            </div>
+            <div class="list-item">
+                <div class="item-icon">ICON</div>
+                <div class="item-content">Beispielitem</div>
+                <div class="item-checkbox"></div>
+            </div>
+        </div>
+        
+        <div class="add-section">
+            <div style="margin-bottom: 10px;">Zuletzt</div>
+            <div class="list-item">
+                <div class="item-icon">ICON</div>
+                <div class="item-content">Beispielitem</div>
+                <div class="add-button" onclick="navigateTo('screen-neue-item')">+</div>
+            </div>
+        </div>
+        
+        <div class="bottom-nav">
+            <button class="nav-button active">Liste</button>
+            <button class="nav-button" onclick="navigateTo('screen-rezepte')">Rezepte</button>
+            <button class="nav-button" onclick="navigateTo('screen-profil')">Profil</button>
+        </div>
+    </div>
+
+    <!-- Screen 2: Rezepte -->
+    <div class="screen" id="screen-rezepte">
+        <div class="header">
+            <div class="header-title">Name Einkaufsliste</div>
+            <div class="search-bar">Suchleiste</div>
+        </div>
+        
+        <div class="recipe-section">
+            <div class="recipe-item">Rezept123</div>
+            <div class="recipe-item">Rezept123</div>
+            <div class="recipe-item">Rezept123</div>
+        </div>
+        
+        <div class="ingredient-group">
+            <div class="ingredient-header">
+                <div class="ingredient-col">Zutat</div>
+                <div class="ingredient-col">Menge</div>
+                <button>+</button>
+            </div>
+            <div class="ingredient-item">
+                <div class="item-icon">ICON</div>
+                <div style="flex: 1;">Zutat123</div>
+            </div>
+        </div>
+        
+        <div class="bottom-nav">
+            <button class="nav-button" onclick="navigateTo('screen-liste')">Liste</button>
+            <button class="nav-button active">Rezepte</button>
+            <button class="nav-button" onclick="navigateTo('screen-profil')">Profil</button>
+        </div>
+    </div>
+
+    <!-- Screen 3: Profil -->
+    <div class="screen" id="screen-profil">
+        <div class="header">
+            <div class="header-title">Name Einkaufsliste</div>
+            <div class="search-bar">Suchleiste</div>
+        </div>
+        
+        <div style="border: 1px solid #333; padding: 15px; margin-bottom: 20px;">
+            <div class="item-icon" style="margin: 0 auto 10px; width: 50px; height: 50px;">ICON</div>
+            <div style="text-align: center; font-weight: bold;">Max Mustermann</div>
+        </div>
+        
+        <div class="profile-section">
+            <div class="profile-item">
+                <span>Profilitem</span>
+                <span>Profilinhalt</span>
+            </div>
+            <div class="profile-item">
+                <span>Profilitem</span>
+                <span>Profilinhalt</span>
+            </div>
+            <div class="profile-item">
+                <span>Profilitem</span>
+                <span>Profilinhalt</span>
+            </div>
+            <div class="profile-item">
+                <span>Profilitem</span>
+                <span>Profilinhalt</span>
+            </div>
+        </div>
+        
+        <div style="border: 1px solid #333; padding: 15px; margin: 20px 0;">
+            <div style="margin-bottom: 10px;">Speichern</div>
+        </div>
+        
+        <div style="border: 1px solid #333; padding: 15px;">
+            <div style="margin-bottom: 10px;">Abo</div>
+            <div class="save-options">
+                <div class="save-option">Free</div>
+                <div class="save-option">Pro</div>
+            </div>
+        </div>
+        
+        <div class="bottom-nav">
+            <button class="nav-button" onclick="navigateTo('screen-liste')">Liste</button>
+            <button class="nav-button" onclick="navigateTo('screen-rezepte')">Rezepte</button>
+            <button class="nav-button active">Profil</button>
+        </div>
+    </div>
+
+    <!-- Screen 4: Neue Item hinzufügen -->
+    <div class="screen" id="screen-neue-item">
+        <div class="header">
+            <div class="header-title">Name Einkaufsliste</div>
+            <div class="search-bar">Suchleiste</div>
+        </div>
+        
+        <div class="tab-buttons">
+            <button class="tab-button active">Sonnen hinzufügen</button>
+            <button class="tab-button">Eigenen Artikel</button>
+            <button class="tab-button">Neues Rezept</button>
+        </div>
+        
+        <div style="margin: 20px 0;">
+            <div style="margin-bottom: 10px;">Vorschläge</div>
+            <div class="list-item">
+                <div class="item-icon">ICON</div>
+                <div class="item-content">Beispielitem</div>
+                <div class="item-checkbox"></div>
+            </div>
+            <div class="list-item">
+                <div class="item-icon">ICON</div>
+                <div class="item-content">Beispielitem</div>
+                <div class="item-checkbox"></div>
+            </div>
+        </div>
+        
+        <div style="margin: 20px 0;">
+            <div style="margin-bottom: 10px;">Rezepte</div>
+            <div class="list-item">
+                <div class="item-icon">ICON</div>
+                <div class="item-content">BeispielRezept</div>
+                <button style="margin-left: 10px;">öffnen</button>
+            </div>
+        </div>
+        
+        <div class="bottom-nav">
+            <button onclick="navigateTo('screen-liste')">Zurück zur Liste</button>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(screenId) {
+            // Hide all screens
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => screen.classList.remove('active'));
+            
+            // Show selected screen
+            const targetScreen = document.getElementById(screenId);
+            if (targetScreen) {
+                targetScreen.classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
