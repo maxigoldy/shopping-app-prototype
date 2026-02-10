@@ -1,5 +1,4 @@
-# LEAF - Shoppinglist-Webapp 
-don’t leaf it. modern shopping.
+# leaf - shoppinglist webapp 
 
 <img width="1736" height="975" alt="title banner graphic - shopping web app" src="https://github.com/user-attachments/assets/deb9762a-dd15-449d-bd57-243132eed2b6" />
 
@@ -25,11 +24,25 @@ don’t leaf it. modern shopping.
 <img width="1732" height="969" alt="project description graphic - shopping web app" src="https://github.com/user-attachments/assets/b15dac47-528e-4592-873c-80dfbbacee3e" />
 (selected german language for this graphic due to german module at HSB.)
 
-## This is our prototype of a shopping list web app.
+## don’t leaf it. modern shopping. 
+This is our prototype of a shopping list web app.
 This prototype was developed as part of our studies at Hochschule Bremen (HSB), in the ISMI degree program, for the HCI module.
 
 This is a prototype only and not a finished product. It's not production ready.
 
-### Lessions learned
-- Dynamic sites by using dynamic html elements managed by js.
-- Creating a (fake) integration for pro subscriptions.
+### Missing Functions 
+(to make this a real app)
+- [x] base functions are all set
+- [ ] integration into alexa, siri and more
+- [ ] saving data not related to browser cache (using DB and Accounting)
+- [ ] integration of Stripe or other payment models
+- [ ] remove demonstrations parts in profile and demo-items
+- [ ] more Default available items
+- [ ] better Inspirationsite (with pictures - maybe Cokingapp integration)
+- [ ] better ux
+
+
+### My Lessions Learned
+- Utilized Web Storage (Local Storage) for persistent client-side data storage
+- Implemented dynamic, single-page–style UI using JavaScript DOM manipulation without relying on frameworks
+- Created a simulated subscription (Pro) system to gate features on the client side
