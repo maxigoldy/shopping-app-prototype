@@ -22,7 +22,8 @@
 -----------------------
 
 <img width="1732" height="969" alt="project description graphic - shopping web app" src="https://github.com/user-attachments/assets/b15dac47-528e-4592-873c-80dfbbacee3e" />
-(selected german language for this graphic due to german module at HSB.)
+
+*(selected german language for this graphic due to german module at HSB.)*
 
 ## don’t leaf it. modern shopping. 
 This is our prototype of a shopping list web app.
@@ -47,3 +48,8 @@ This is a prototype only and not a finished product. It's not production ready.
 - Utilized Web Storage (Local Storage) for persistent client-side data storage
 - Implemented dynamic, single-page–style UI using JavaScript DOM manipulation without relying on frameworks
 - Created a simulated subscription (Pro) system to gate features on the client side
+
+
+
+
+
