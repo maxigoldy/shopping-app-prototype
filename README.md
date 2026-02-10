@@ -30,16 +30,17 @@ This prototype was developed as part of our studies at Hochschule Bremen (HSB), 
 
 This is a prototype only and not a finished product. It's not production ready.
 
-### Missing Functions 
-(to make this a real app)
-- [x] base functions are all set
-- [ ] integration into alexa, siri and more
-- [ ] saving data not related to browser cache (using DB and Accounting)
-- [ ] integration of Stripe or other payment models
-- [ ] remove demonstrations parts in profile and demo-items
-- [ ] more Default available items
-- [ ] better Inspirationsite (with pictures - maybe Cokingapp integration)
-- [ ] better ux
+### Missing Features
+*(Required to make this a production-ready application)*
+- [x] Core functionality implemented
+- [ ] Integration with voice assistants (Alexa, Siri, etc.)
+- [ ] Persistent data storage independent of browser cache (database with user accounts)
+- [ ] Integration of Stripe or alternative payment providers
+- [ ] Removal of demo-only content from profiles and sample items
+- [ ] Expansion of default available items
+- [ ] Improved inspiration/discovery section (image-based; possible cooking app API integration)
+- [ ] Improved UX (User Experience)
+
 
 
 ### My Lessions Learned
