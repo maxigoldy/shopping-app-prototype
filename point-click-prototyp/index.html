@@ -368,7 +368,7 @@
         </div>
         
         <div class="tab-buttons">
-            <button class="tab-button active">Sonnen hinzufügen</button>
+            <button class="tab-button active">Artikel hinzufügen</button>
             <button class="tab-button">Eigenen Artikel</button>
             <button class="tab-button">Neues Rezept</button>
         </div>
@@ -403,11 +403,8 @@
 
     <script>
         function navigateTo(screenId) {
-            // Hide all screens
             const screens = document.querySelectorAll('.screen');
             screens.forEach(screen => screen.classList.remove('active'));
-            
-            // Show selected screen
             const targetScreen = document.getElementById(screenId);
             if (targetScreen) {
                 targetScreen.classList.add('active');
