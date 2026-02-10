@@ -22,6 +22,9 @@ don’t leaf it. modern shopping.
 
 -----------------------
 
+<img width="1732" height="969" alt="grafik" src="https://github.com/user-attachments/assets/b15dac47-528e-4592-873c-80dfbbacee3e" />
+(german language due to the german module at hsb.)
+
 ## This is our prototype of a shopping list web app.
 This prototype was developed as part of our studies at Hocschule Bremen, in the ISMI degree program, for the HCI module.
 
