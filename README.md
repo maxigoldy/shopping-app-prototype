@@ -4,15 +4,15 @@
 
 --------------------------
 
-# How to use it as a web app?
-## Steps to Turn Website into an App (on iOS 26 or newer)
+## How to use it as a web app?
+### Steps to Turn Website into an App (on iOS 26 or newer)
 1. Open Safari: Go to the website you want to add. *(Here it's https://maxigoldy.github.io/shopping-app-prototype/)*
 2. Share Menu: Tap the "Share" button (box with upward arrow) at the bottom of the screen.
 3. Add to Home Screen: Scroll down and select "Add to Home Screen".
 4. Name the App: Rename the shortcut if desired, then tap "Add".
 5. Open as App: The icon will appear on your home screen, allowing the site to open in a dedicated, full-screen window.
 
-## Chrome "Add to Home Screen" (using Chrome on Android):
+### Chrome "Add to Home Screen" (using Chrome on Android):
 1. Open Chrome on Android.
 2. Navigate to the website. *(Here it's https://maxigoldy.github.io/shopping-app-prototype/)*
 3. Tap the three-dot menu (top right).
@@ -25,11 +25,14 @@
 
 *(selected german language for this graphic due to german module at HSB.)*
 
-## don’t leaf it. modern shopping. 
+--------------------------
+
 This is our prototype of a shopping list web app.
 This prototype was developed as part of our studies at Hochschule Bremen (HSB), in the ISMI degree program, for the HCI module.
 
 This is a prototype only and not a finished product. It's not production ready.
+
+--------------------------
 
 ### Missing Features
 *(Required to make this a production-ready application)*
@@ -42,7 +45,7 @@ This is a prototype only and not a finished product. It's not production ready.
 - [ ] Improved inspiration/discovery section (image-based; possible cooking app API integration)
 - [ ] Improved UX (User Experience)
 
-
+--------------------------
 
 ### My Lessions Learned
 - Utilized Web Storage (Local Storage) for persistent client-side data storage
