@@ -1,18 +1,4 @@
-/*
- * Mobile-first Shopping List App (green / modern / search-first)
- *
- * Features:
- * - Search-first flow with suggestions, catalog and recipes.
- * - List view with items and recently checked items.
- * - Recipes page with ability to add ingredients to list.
- * - Inspiration page with suggested dishes, hearts, and add-to-list functionality.
- * - History page showing items checked in the last 14 days with purchase date.
- * - Profile page with fake integrations, version, and a togglable pro subscription.
- * - Drawer to switch lists, sheets for item actions and menu options.
- * - Persist data via localStorage using KEY constant.
- */
-
-const KEY = "shopping_app_mobile_v3";
+const KEY = "shopping_app_leaf";
 
 /* Category icons used throughout the UI */
 const ICONS = {
