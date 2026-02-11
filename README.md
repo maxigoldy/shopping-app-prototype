@@ -1,4 +1,4 @@
-# leaf - shoppinglist webapp 
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=100&size=30&pause=1000&color=85F797&center=true&width=583&lines=leaf+-+shoppinglist+webapp)](https://git.io/typing-svg)
 
 <img width="1736" height="975" alt="title banner graphic - shopping web app" src="https://github.com/user-attachments/assets/deb9762a-dd15-449d-bd57-243132eed2b6" />
 
@@ -32,6 +32,8 @@ This prototype was developed as part of our studies at Hochschule Bremen (HSB), 
 
 This is a prototype only and not a finished product. It's not production ready.
 
+![Page Speed](https://pagespeed-insights.herokuapp.com?url=https://maxigoldy.github.io/shopping-app-prototype/)
+
 --------------------------
 
 ### Missing Features
@@ -52,7 +54,8 @@ This is a prototype only and not a finished product. It's not production ready.
 - Implemented dynamic, single-page–style UI using JavaScript DOM manipulation without relying on frameworks
 - Created a simulated subscription (Pro) system to gate features on the client side
 
-
+--------------------------
+![Jokes Card](https://readme-jokes.vercel.app/api)
 
 
 
