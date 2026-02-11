@@ -32,8 +32,6 @@ This prototype was developed as part of our studies at Hochschule Bremen (HSB), 
 
 This is a prototype only and not a finished product. It's not production ready.
 
-![Page Speed](https://pagespeed-insights.herokuapp.com?url=https://maxigoldy.github.io/shopping-app-prototype/)
-
 --------------------------
 
 ### Missing Features
