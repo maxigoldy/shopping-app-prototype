@@ -1048,5 +1048,4 @@ window.addEventListener('scroll', () => {
   render();
 })();
 
-// NOTICE ONLY //
 localStorage.setItem("NOTICE", "Why are you reading out what we write in local storage? Noting to worry but feel free to check.");
