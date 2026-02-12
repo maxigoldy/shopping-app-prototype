@@ -85,7 +85,7 @@ function loadState() {
 
   // Migrate old data to new storage
   try {
-    const olddata = localStorage.getItem(KEY);
+    const olddata = localStorage.getItem(SECRET);
     if (olddata){
       localStorage.setItem("data", CryptoJS.AES.encrypt(JSON.stringify(olddata), KEY).toString());
       localStorage.removeItem(KEY);
