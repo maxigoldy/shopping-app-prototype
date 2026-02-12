@@ -77,7 +77,11 @@ function formatDate(iso) {
 
 /* State handling: load and save from localStorage */
 function loadState() {
-  const raw = localStorage.getItem(KEY);
+  //const raw2 = localStorage.getItem(KEY);
+  //encrypted load:
+  const raw = CryptoJS.AES.decrypt(localStorage.getItem("data"), KEY).toString(CryptoJS.enc.Utf8);
+  console.log("Entschlüsselt:", raw);
+  ////////////
   if (!raw) return demoState();
   try {
     const st = JSON.parse(raw);
@@ -95,7 +99,12 @@ function loadState() {
 }
 
 function saveState() {
-  localStorage.setItem(KEY, JSON.stringify(state));
+  //localStorage.setItem(KEY, JSON.stringify(state));
+  //encrypted save:
+  localStorage.setItem("data", CryptoJS.AES.encrypt(JSON.stringify(state), KEY).toString());
+  console.log("Verschlüsselt!");
+
+  ////////////////
 }
 
 /* Default state used on first load */
@@ -1039,4 +1048,5 @@ window.addEventListener('scroll', () => {
   render();
 })();
 
-localStorage.setItem("NOTICE", "Why are you reading out what we write in local storage? Nothing to worry, but feel free to check it out.");
+// NOTICE ONLY //
+localStorage.setItem("NOTICE", "Why are you reading out what we write in local storage? Noting to worry but feel free to check.");
