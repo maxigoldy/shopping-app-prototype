@@ -79,15 +79,20 @@ function formatDate(iso) {
 function loadState() {
 
   // Migrate old data to new storage
-  const olddata = localStorage.getItem(KEY);
-  if (olddata){
-    localStorage.setItem("data", CryptoJS.AES.encrypt(JSON.stringify(olddata), KEY).toString());
-    localStorage.removeItem(KEY);
+  try {
+    const olddata = localStorage.getItem(KEY);
+    if (olddata){
+      localStorage.setItem("data", CryptoJS.AES.encrypt(JSON.stringify(olddata), KEY).toString());
+      localStorage.removeItem(KEY);
+      }
+  } catch (error) {
+    return null;
   }
 
-  const raw = CryptoJS.AES.decrypt(localStorage.getItem("data"), KEY).toString(CryptoJS.enc.Utf8);
-  if (!raw) return demoState();
+  
   try {
+    const raw = CryptoJS.AES.decrypt(localStorage.getItem("data"), KEY).toString(CryptoJS.enc.Utf8);
+    if (!raw) return demoState();
     const st = JSON.parse(raw);
     // Ensure arrays exist
     if (!Array.isArray(st.lists) || !st.lists.length) return demoState();
@@ -1048,4 +1053,5 @@ window.addEventListener('scroll', () => {
   render();
 })();
 
+// NOTICE //
 localStorage.setItem("NOTICE", "Why are you reading out what we write in local storage? Noting to worry but feel free to check.");
