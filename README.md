@@ -51,6 +51,7 @@ This is a prototype only and not a finished product. It's not production ready.
 - Utilized Web Storage (Local Storage) for persistent client-side data storage
 - Implemented dynamic, single-page–style UI using JavaScript DOM manipulation without relying on frameworks
 - Created a simulated subscription (Pro) system to gate features on the client side
+- Encrypt/Decrypt JSON Strings using CryptoJS
 
 --------------------------
 ![Jokes Card](https://readme-jokes.vercel.app/api)
