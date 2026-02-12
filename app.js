@@ -77,11 +77,15 @@ function formatDate(iso) {
 
 /* State handling: load and save from localStorage */
 function loadState() {
-  //const raw2 = localStorage.getItem(KEY);
-  //encrypted load:
+
+  // Migrate old data to new storage
+  const olddata = localStorage.getItem(KEY);
+  if (olddata){
+    localStorage.setItem("data", CryptoJS.AES.encrypt(JSON.stringify(olddata), KEY).toString());
+    localStorage.removeItem(KEY);
+  }
+
   const raw = CryptoJS.AES.decrypt(localStorage.getItem("data"), KEY).toString(CryptoJS.enc.Utf8);
-  console.log("Entschlüsselt:", raw);
-  ////////////
   if (!raw) return demoState();
   try {
     const st = JSON.parse(raw);
@@ -100,11 +104,7 @@ function loadState() {
 
 function saveState() {
   //localStorage.setItem(KEY, JSON.stringify(state));
-  //encrypted save:
   localStorage.setItem("data", CryptoJS.AES.encrypt(JSON.stringify(state), KEY).toString());
-  console.log("Verschlüsselt!");
-
-  ////////////////
 }
 
 /* Default state used on first load */
