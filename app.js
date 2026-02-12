@@ -1,4 +1,4 @@
-const KEY = "shopping_app_leaf";
+const SECRET = "shopping_app_leaf";
 
 /* Category icons used throughout the UI */
 const ICONS = {
@@ -56,6 +56,11 @@ const INSPIRATIONS_DEMO = [
   },
 ];
 
+
+var hash = CryptoJS.HmacSHA512(SECRET, "powered by HSB");
+const KEY = hash.toString();
+//console.log("KEY: ", KEY)
+
 /* Utility functions */
 function generateId(prefix = "id") {
   return `${prefix}_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`;
@@ -89,7 +94,6 @@ function loadState() {
     return null;
   }
 
-  
   try {
     const raw = CryptoJS.AES.decrypt(localStorage.getItem("data"), KEY).toString(CryptoJS.enc.Utf8);
     if (!raw) return demoState();
