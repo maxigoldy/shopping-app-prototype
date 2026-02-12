@@ -1039,4 +1039,4 @@ window.addEventListener('scroll', () => {
   render();
 })();
 
-localStorage.setItem("NOTICE", "Why are you reading out what we write in local storage? Noting to worry but feel free to check.");
+localStorage.setItem("NOTICE", "Why are you reading out what we write in local storage? Nothing to worry, but feel free to check it out.");
