@@ -82,8 +82,6 @@ function formatDate(iso) {
 
 /* State handling: load and save from localStorage */
 function loadState() {
-
-  // Migrate old data to new storage
   try {
     const olddata = localStorage.getItem(SECRET);
     if (olddata){
