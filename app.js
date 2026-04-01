@@ -86,7 +86,7 @@ function loadState() {
     const olddata = localStorage.getItem(SECRET);
     if (olddata){
       localStorage.setItem("data", CryptoJS.AES.encrypt(JSON.stringify(olddata), KEY).toString());
-      localStorage.removeItem(KEY);
+      localStorage.removeItem(SECRET);
       }
   } catch (error) {
     return null;
